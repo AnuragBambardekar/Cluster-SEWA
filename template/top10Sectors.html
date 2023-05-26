@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Top 10 Sectors in the S&P500 {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Top 10 Sectors</h1>
+    <div>
+        {{ fig|safe }}
+        {{ div|safe }}
+    </div>     
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>Top 10 Sectors based on Returns Volatility Ratio.</b></p>
+        <hr>
+        <p>
+            Top 10 Sectors based on Returns Volatility Ratio.
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

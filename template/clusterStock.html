@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Clustering Stocks in the S&P500 {% endblock %}
+
+{% block content %}
+
+<body>
+    <h1 style="margin: 20px;">Clustering Stocks</h1>
+    <table class="table table-striped table-hover" style="margin: 20px;">
+        <thead>
+            <tr>
+                <th scope="col">Cluster #</th>
+                <th scope="col">Stocks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cluster_num, cluster_stocks in clusters.items %}
+            <tr>
+                <th scope="row">{{ cluster_num }}</th>
+                <td>
+                    <ul>
+                        {% for stock in cluster_stocks %}
+                        <li>{{ stock }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ plot|safe }}
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>Clustering Stocks based on returns using kmeans.</b></p>
+        <hr>
+        <p>
+            Clustering Stocks based on returns using kmeans.
+        </p>
+    </div>
+</body>
+
+{% endblock %}

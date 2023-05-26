@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Best/Worst Days to Invest in the S&P500 {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Best/Worst Days to Invest in the S&P500</h1>
+    <div class="container" style="margin: 20px;">
+        {{div| safe}}
+    </div>
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>This Graph is is showing a Best/Worst Days to Invest in the S&P500.</b></p>
+        <hr>
+        <p>
+            Best/Worst Days based on Gap Returns & Intra-day Returns.The significance of this plot is that it allows for the identification of patterns in stock market returns that may be specific to certain days of the week. This information can be useful for investors and traders to make informed decisions about when to buy or sell stocks. 
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

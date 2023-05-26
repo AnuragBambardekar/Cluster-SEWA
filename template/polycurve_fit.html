@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Polynomial Curve Fitting Results {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Trend Graph</h1>
+    <div class="container" style="margin: 20px;">
+        {{div| safe}}
+    </div>
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>This Graph is generated using Polynomial curve fitting.</b></p>
+        <hr>
+        <p>
+            Polynomial curve fitting and moving averages are both techniques used in financial analysis to identify trends and patterns in stock prices over time. However, they differ in their approach and the insights they provide. The graph obtained from polynomial curve fitting of S&P500 stock data shows the relationship between time (x-axis) and stock price (y-axis). The fitted curve represents a mathematical function that approximates the underlying trend of the data. By examining the graph, you can gain insights into the behavior of the stock price over time, such as whether it has increased, decreased, or remained relatively constant. Moving averages are a statistical technique that involve calculating the average of a series of prices over a certain time period (e.g. the last 50 days). This average value is then plotted on a graph to show how the stock price has changed over time relative to this moving average. By comparing the stock price to the moving average, you can identify trends and potential buy/sell signals. For example, if the stock price is consistently above the moving average, this may indicate a bullish trend and a good time to buy, whereas if the stock price is consistently below the moving average, this may indicate a bearish trend and a good time to sell. Polynomial curve fitting, on the other hand, involves fitting a mathematical function to the historical stock price data using a polynomial equation. This allows you to model the underlying trend of the data more precisely, and can provide insights into the shape and direction of the trend over time. Polynomial curve fitting is also more flexible than moving averages, as it allows you to fit curves of varying degrees (e.g. linear, quadratic, cubic) to the data to capture more complex trends.
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

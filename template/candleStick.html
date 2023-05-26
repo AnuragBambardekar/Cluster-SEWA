@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Candle Stick Chart {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Candle Stick Chart</h1>
+    <div class="container" style="margin: 20px;">
+        {{div| safe}}
+    </div>
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>This Graph is is showing a Candlestick.</b></p>
+        <hr>
+        <p>
+            A candlestick chart is a financial chart used to represent the price movement of an asset, such as a stock or a commodity. It is named after the candlestick shape of its data points, which resemble candles with a thin vertical line representing the range of prices traded (high and low) during a specific time period, and a wider rectangular body representing the opening and closing prices of the asset during the same time period. Candlesticks are typically colored to indicate whether the opening price was higher or lower than the closing price. A green or white candlestick is used to represent a bullish or positive trend, indicating that the closing price was higher than the opening price, while a red or black candlestick is used to represent a bearish or negative trend, indicating that the closing price was lower than the opening price. Candlestick charts are useful for technical analysis of financial data because they provide information on the behavior of the market and can help traders identify trends, reversals, and patterns. They are commonly used in conjunction with other technical indicators and tools to make trading decisions.
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

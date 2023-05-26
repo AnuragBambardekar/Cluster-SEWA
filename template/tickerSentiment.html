@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Ticker Sentiment {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Market Sentiment - {{ companyName }}</h1>
+    <div class="container" style="margin: 20px;">
+        {{div| safe}}
+    </div>
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>This Sentiment is obtained after analysing articles on the internet using the newsapi library-API.</b></p>
+        <hr>
+        <p><b>{{ companyName }} ({{ ticker }}), is trending {{ trend }}.</b></p>
+        <hr>
+        <h2>Related News Articles:</h2>
+        {% if articles %}
+        {% for article in articles %}
+        <div class="article">
+            <h3>{{ article.title }}</h3>
+            <p><b>{{ article.source.name }}</b>, <i>{{ article.publishedAt }}</i></p>
+            <p>{{ article.description }}</p>
+            
+            <a href="{{ article.url }}" target="_blank">Read More</a>
+            <hr>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No news articles found for {{ companyName }}.</p>
+        {% endif %}
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

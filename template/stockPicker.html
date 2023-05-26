@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Stock Picker {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Stock Picker</h1>
+    <div class="container">
+        <form action="{% url 'stockTracker' %}" method="get">
+            <label for="stockPicker">Select Stocks: </label>
+            <select name="stockPicker" multiple size="5">
+                <option selected>Choose a ticker</option>
+                {% for symbol in sp500_symbols %}
+                    <option>{{ symbol }}</option>
+                {% endfor %}
+            </select> 
+            <button type="submit" style="width: 200px; margin-top: 10px;">See Data</button>
+        </form>
+    </div>
+</body>
+
+
+{% endblock %}

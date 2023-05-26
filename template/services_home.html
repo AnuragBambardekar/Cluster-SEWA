@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+
+{% block title %} Our Services {% endblock %}
+
+{% block content %}
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #aaa;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 500px;
+        align-items: center;
+    }
+    .form-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .form-container form {
+        margin: 0;
+    }
+</style>
+
+<body>
+    <h1>Our Services</h1>
+
+    <div class="form-container">
+    <!-- SERVICE #1 - DOWNLOAD TICKER DATA (Can maybe later populate combobox for tickers on UI) -->
+    <form action="{% url 'download' %}" method="get">
+        <h3>Download Ticker Data</h3>
+        {% csrf_token %}
+        <!-- <input type="text" placeholder="Enter Ticker Name" style="width: 350px;" name="ticker"> -->
+        <select name="ticker">
+            <option disabled selected>Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>    
+        <hr>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ request.GET.start_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ request.GET.end_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+        
+        <button type="submit" style="width: 200px; margin-top: 10px;">Download dataset</button>
+    </form>
+
+    <!-- SERVICE #2 - MOVING AVERAGE PREDICTOR - POLYFIT-->
+    <form action="{% url 'poly_trendgraph' %}" method="get">
+        <h3>Trend Graphs of Tickers in S&P 500 (using Polynomial curve fitting) + 30-day Forecast</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>       
+        <hr>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ request.GET.start_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ request.GET.end_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+    
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to get Trend Graph</button>
+    </form>
+
+    <!-- SERVICE #3 - MOVING AVERAGE PREDICTOR - BAYESIAN REGRESSION-->
+    <form action="{% url 'bayesian_predictor' %}" method="get">
+        <h3>Trend Graphs of Tickers in S&P 500 (using Bayesian regression) + 30-day Forecast</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>       
+        <hr>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ request.GET.start_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ request.GET.end_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+    
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to get Trend Graph</button>
+    </form>
+
+    <!-- SERVICE #4 - TICKER SENTIMENT-->
+    <form action="{% url 'sentiment_ticker' %}" method="get">
+        <h3>Ticker Sentiment using nltk library</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>  
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to get Sentiment</button>
+    </form>
+
+    <!-- SERVICE #4 - VOLATILITY SHIFT-->
+    <form action="{% url 'volatility' %}" method="get">
+        <h3>Check Volatility of a Stock</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>  
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see Volatility</button>
+    </form>
+
+    <!-- SERVICE #5 - CANDLESTICK-->
+    <form action="{% url 'candlestick' %}" method="get">
+        <h3>See Candlestick chart for a Ticker</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>  
+
+        <hr>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ request.GET.start_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ request.GET.end_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+
+        <label for="windows">Moving Average Window:</label>
+        <select multiple id="windows" name="windows">
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+        </select><br>
+
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see Candlestick chart</button>
+    </form>
+    
+    <!-- SERVICE #6 - STOCK PICKER & TRACKER -->
+    <form action="{% url 'stockPicker' %}" method="get">
+        <h3>Live Stock Tracker Service</h3>
+        {% csrf_token %}
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to launch Live Stock Tracker Service</button>
+    </form>
+
+    <!-- SERVICE #7 - SMA OF A TICKER -->
+    <form action="{% url 'SMA' %}" method="get">
+        <h3>Simple Moving Average (5 and 15 Day)</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select> 
+        <hr>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ request.GET.start_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ request.GET.end_date|default:'' }}" min="2000-01-01" max="{{ today }}">
+ 
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see SMA-5 and SMA-15</button>
+    </form>
+
+    <!-- SERVICE #8 - BEST/WORST DAY -->
+    <form action="{% url 'bestDay' %}" method="get">
+        <h3>Best/Worst Day to Trade</h3>
+        {% csrf_token %}
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see best days to Invest</button>
+    </form>
+
+    <!-- SERVICE #9 - TOP 10 Companies based on Return Volatility Ratio -->
+    <form action="{% url 'top10Returns' %}" method="get">
+        <h3>Top 10 Companies</h3>
+        {% csrf_token %}
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see top 10 companies</button>
+    </form>
+
+    <!-- SERVICE #10 - TOP 10 Sectors based on Return Volatility Ratio -->
+    <form action="{% url 'top10Sectors' %}" method="get">
+        <h3>Top 10 Sectors</h3>
+        {% csrf_token %}
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see top 10 sectors</button>
+    </form>
+
+    <!-- SERVICE #11 -BEST/WORST PERFORMING STOCKS -->
+    <form action="{% url 'bestPerfStocks' %}" method="get">
+        <h3>Best/Worst Performing Stocks</h3>
+        {% csrf_token %}
+
+        <!--Take input for number of years-->
+
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see Best/Worst Stocks</button>
+    </form>
+
+    <!-- SERVICE #12 - STOCK CLUSTER K-MEANS -->
+    <form action="{% url 'clusterStocks' %}" method="get">
+        <h3>Clusters using kmeans</h3>
+        {% csrf_token %}
+
+
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see Clusters</button>
+    </form>
+
+    <!-- SERVICE #13 - MOVING AVERAGE PREDICTOR - HGBOOST-->
+    <form action="{% url 'movAvgPredictor' %}" method="get">
+        <h3>Trend Graphs HGBoost + Forecast</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>       
+
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to get Trend Graph</button>
+    </form>
+
+    <!-- SERVICE #14 - MOVING AVERAGE PREDICTOR - MACD+SMA-->
+    <form action="{% url 'movAvgPredictorMACD' %}" method="get">
+        <h3>Trend Graphs HGBoost+MACD + Forecast</h3>
+        {% csrf_token %}
+        <select name="ticker" required>
+            <option disabled selected value="">Choose a ticker</option>
+            {% for symbol in sp500_symbols %}
+                <option>{{ symbol }}</option>
+            {% endfor %}
+        </select>       
+
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to get Trend Graph</button>
+    </form>
+
+    <!-- SERVICE #15 - STOCK CLUSTER AGGLO -->
+    <form action="{% url 'aggloClustering' %}" method="get">
+        <h3>Clusters using Agglomerative Clustering</h3>
+        {% csrf_token %}
+
+
+        <button type="submit" style="width: 200px; margin-top: 10px;">Click to see Clusters</button>
+    </form>
+</div>
+    <!-- SERVICE #14 - STOCK SCREENER -->
+    <!-- Future Implementation -->
+    
+    {{output_data}}
+    {{website_link}}
+</body>
+{% endblock %}

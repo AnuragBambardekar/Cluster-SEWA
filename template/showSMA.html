@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Simple Moving Average Chart {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Simple Moving Average Chart</h1>
+    <div class="container" style="margin: 20px;">
+        {{div| safe}}
+    </div>
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>This Graph is is showing a Simple Moving Average.</b></p>
+        <hr>
+        <p>
+            A Simple Moving Average chart is a financial chart used to represent the price movement of an asset, such as a stock or a commodity.Fast and slow moving averages (MA) are important technical indicators used in financial analysis because they provide insights into a stock's short-term and long-term price trends. The fast MA, calculated over a shorter time period, can provide information about the stock's short-term price momentum, while the slow MA, calculated over a longer time period, can provide information about the stock's long-term trend. By comparing the two, traders can get an idea of whether the stock is trending up or down, and potentially make trading decisions based on these trends. The crossover of the two moving averages is also often used as a signal for potential buying or selling opportunities.
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Bayesian Regression Results {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Trend Graph</h1>
+    <div class="container" style="margin: 20px;">
+        {{div| safe}}
+    </div>
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>This Graph is generated using Bayesian Regression.</b></p>
+        <hr>
+        <p>
+            Bayesian linear regression is a probabilistic approach to linear regression that allows for uncertainty in the model's parameters and can estimate the probability distribution of the model's output. Model complexity: Polynomial curve fitting involves fitting a polynomial function to the data, with the degree of the polynomial chosen by the user. In contrast, Bayesian linear regression allows for a wide range of models with varying complexity, including linear models and models with polynomial, sinusoidal, or other types of basis functions. Prior information: Bayesian linear regression incorporates prior information about the distribution of the model parameters, which can help to regularize the model and prevent overfitting. In contrast, polynomial curve fitting does not incorporate any prior information. Uncertainty estimation: Bayesian linear regression provides estimates of uncertainty for the model parameters and predictions, which can be useful for understanding the reliability of the model. In contrast, polynomial curve fitting does not provide any estimates of uncertainty. Data requirements: Polynomial curve fitting can be applied to any data set, whereas Bayesian linear regression requires a sufficient amount of data to estimate the model parameters and their uncertainties accurately.
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

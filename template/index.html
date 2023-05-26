@@ -1,0 +1,438 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;400;600;700&display=swap" rel="stylesheet">
+    <title>Stocker Sewa App</title>
+</head>
+<body>
+    <!-- <form action="home" method="get">
+        <h3>Go to Home</h3>
+        {% csrf_token %}
+        <button type="submit" style="width: 200px; margin-top: 10px;">Get Started</button>
+    </form> -->
+
+    <div style="position: relative;
+                width: auto;
+                height: 1700px;
+    
+                /* grey */
+    
+                background: #C6BBBB;">
+        
+        <!--HEADER-->
+        <header style="position: absolute;
+        width: 1540px;
+        height: 655.5px;
+        left: 0px;
+        top: 0px; background-image: url('/static/stocker1.jpg'); 
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+
+        <img src="{% static 'bull.svg' %}" style="position: absolute;
+        left: 2.36%;
+        right: 91.39%;
+        top: -1.29%;
+        bottom: 96%;"/>
+
+        <p style="position: absolute;
+        width: 312px;
+        height: 77px;
+        left: 119px;
+        top: 0px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 50px;
+        line-height: 79px;
+        text-align: center;
+        
+        color: #FFFFFF;">STOCKER APP</p>
+
+        <div style="/* Auto layout */
+
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        
+        position: absolute;
+        width: 456px;
+        height: 77px;
+        left: 559px;
+        top: 9px;">
+        <a href="#" style="width: 152px;
+        height: 77px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 79px;
+        text-align: center;
+        
+        color: #FFFFFF;
+        
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 0;
+        flex-grow: 0;">Home</a>
+
+        <a href="#" style="width: 152px;
+        height: 77px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 79px;
+        text-align: center;
+        
+        color: #FFFFFF;
+        
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 1;
+        flex-grow: 0;">About</a>
+
+        <a href="#" style="width: 152px;
+        height: 77px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 79px;
+        text-align: center;
+        
+        color: #FFFFFF;
+        
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 2;
+        flex-grow: 0;">Admin</a>
+        </div>
+
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 8px 12px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 150px;
+        height: 80px;
+        left: 1079px;
+        top: 18px;
+        
+        background: #FA0000;">
+        
+        <a href="#" style="width: 126px;
+        height: 79px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 79px;
+        /* identical to box height */
+        
+        text-align: center;
+        
+        color: #FFFFFF;
+        
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 0;
+        flex-grow: 0;">SignUp</a>
+    
+        </div>
+
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 4px 24px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 150px;
+        height: 80px;
+        left: 1241px;
+        top: 19px;
+        
+        background: #FF0000;">
+        
+        <a href="#" style="width: 96px;
+        height: 79px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 79px;
+        /* identical to box height */
+        
+        text-align: center;
+        
+        color: #FFFFFF;
+        
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 0;
+        flex-grow: 0;">Login</a>
+
+        </div>
+
+        <p style="position: absolute;
+        width: 1093px;
+        height: 191px;
+        left: 174px;
+        top: 77px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 130px;
+        line-height: 205px;
+        text-align: center;
+        
+        color: #E4E4E4;">TRADE LIKE A PRO</p>
+        </header>
+
+        <!--BODY-->
+        <div style="position: absolute;
+        width: 664px;
+        height: 465px;
+        left: 141px;
+        top: 723px;
+        
+        background-image: url('/static/stocker2.jpeg');
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;">
+        </div>
+        <p style="position: absolute;
+        width: 731px;
+        height: 203px;
+        left: 750px;
+        top: 781px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 80px;
+        line-height: 126px;
+        text-align: center;
+        
+        /* black */
+        
+        color: #000000;">STOCKER SEWA</p>
+
+        <p style="position: absolute;
+        width: 524px;
+        height: 244px;
+        left: 854px;
+        top: 883px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 50px;
+        line-height: 79px;
+        text-align: center;
+        
+        color: #000000;">Your one-stop-shop for stock clusters and ticker data!</p>
+
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 8px 12px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 372px;
+        height: 90px;
+        left: 926px;
+        top: 1041px;
+        
+        background: #FA0000;">
+        
+        <form action="home" method="get">
+            
+            {% csrf_token %}
+        
+        <button style="width: 345px;
+        height: 79px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 79px;
+        /* identical to box height */
+        
+        text-align: center;
+        
+        color: #FFFFFF;
+        
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 0;
+        flex-grow: 0;">Get Started!</button>
+        </form>
+
+        </div>
+
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 65px;
+        
+        position: absolute;
+        width: 330px;
+        height: 65px;
+        left: 926px;
+        top: 723px;">
+    
+        </div>
+
+        <!--FOOTER-->
+        <div style="position: absolute;
+        width: 1540px;
+        height: 259px;
+        left: 0px;
+        top: 1441px;
+        
+        /* black */
+        
+        background: #000000;">
+
+        <p style="position: absolute;
+
+
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 80px;
+        line-height: 126px;
+        text-align: center;
+
+        /* grey */
+
+        color: #C6BBBB;
+        ">
+        START TRADING</p>
+
+        <p style="position: relative;
+
+
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 126px;
+        text-align: center;
+
+        /* grey */
+
+        color: #ff0000;
+        ">
+        Disclaimer: Use our service at your own risk</p>
+
+
+        <a href="#" style="position: absolute;
+        width: 285px;
+        height: 68px;
+        left: 966px;
+        top: 180px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 30px;
+        line-height: 47px;
+        text-align: center;
+        
+        color: #FFFFFF;">Privacy Policy</a>
+
+        <a href="#" style="position: absolute;
+        width: 351px;
+        height: 68px;
+        left: 1135px;
+        top: 180px;
+        
+        font-family: 'Saira Condensed';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 30px;
+        line-height: 47px;
+        text-align: center;
+        
+        color: #FFFFFF;">Terms & Condition</a>
+
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 35px;
+        
+        position: absolute;
+        width: 250px;
+        height: 60px;
+        left: 1156px;
+        top: 20px;">
+        
+        <img src="{% static 'github.svg' %}" style="width: 60px;
+        height: 60px;
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 0;
+        flex-grow: 0;"/>
+
+        <img src="{% static 'linkedin.svg' %}" style="width: 60px;
+        height: 60px;
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;"/>
+
+        <img src="{% static 'facebook.svg' %}" style="width: 60px;
+        height: 60px;
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;"/>
+        
+        </div>
+        
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>

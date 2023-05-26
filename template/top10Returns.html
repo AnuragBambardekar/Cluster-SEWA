@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Top 10 Companies in the S&P500 {% endblock %}
+
+{% block content %}
+
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-3.1.0.min.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-3.1.0.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+    <h1 style="margin: 20px;">Top 10 Companies</h1>
+    <div class="container" style="margin: 20px;">
+        <table>
+            
+            <tbody>
+                <th>Ticker</th>
+                <tr>
+                    {% for ticker in tickers %}
+                    <td>{{ ticker }}</td>
+                    {% endfor %}
+                </tr>
+                <th>Sector</th>
+                <tr>
+                    {% for sector in sectors %}
+                    <td>{{ sector }}</td>
+                    {% endfor %}
+                </tr>
+                <th>Return Volatility Ratio</th>
+                <tr>
+                    {% for return in returns %}
+                    <td>{{ return|floatformat:4 }}</td>
+                    {% endfor %}
+                </tr>
+                
+            </tbody>            
+        </table>
+    </div>
+    <div>
+        {{ fig|safe }}
+    </div>     
+    <div class="container" style="margin: 20px; width: auto;">
+        <p><b>Top 10 Companies based on Returns Volatility Ratio.</b></p>
+        <hr>
+        <p>
+            The return-volatility ratio, also known as the Sharpe Ratio, is an important metric in finance because it measures the risk-adjusted return of an investment. It is calculated by taking the difference between the investment's return and the risk-free rate of return, and dividing that by the investment's volatility (standard deviation of returns). The higher the Sharpe Ratio, the better the investment's risk-adjusted performance. The Sharpe Ratio is important because it helps investors compare the performance of different investments on a risk-adjusted basis. Two investments may have the same return, but if one has lower volatility, it may be a better investment because it has a higher Sharpe Ratio. Additionally, the Sharpe Ratio can be used to optimize a portfolio by choosing investments that have high expected returns and low volatility. By maximizing the Sharpe Ratio of a portfolio, investors can achieve a higher return for a given level of risk, or a lower risk for a given level of return.
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-3.1.0.min.js"></script>
+{{script| safe}}
+
+
+{% endblock %}

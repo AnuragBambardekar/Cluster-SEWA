@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+
+<h1>Welcome back, {{user.username}}</h1>
+
+<!--Our Services-->
+<body>
+    <!-- SERVICE #1 - STOCK DATA SERVICES -->
+        <form action="{% url 'services' %}" method="get" style="margin-bottom: 20px;">
+            {% csrf_token %}
+                   
+            <!-- <button type="submit" style="width: 500px; margin-top: 10px;">Click here to view our Services</button> -->
+
+            <button type="submit" style="width: 345px;
+                        height: 79px;
+                        
+                        font-family: 'Saira Condensed';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 50px;
+                        line-height: 79px;
+                        /* identical to box height */
+                        margin-right: 20px;
+                        text-align: center;
+                        background-color: #543dc7;
+                        color: #ffffff;
+                        
+                        
+                        /* Inside auto layout */
+                        
+                        flex: none;
+                        order: 0;
+                        flex-grow: 0;">Get Started!</button>
+
+        </form>
+
+    
+</body>
+
+
+{% endblock %}
